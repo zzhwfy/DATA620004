@@ -26,7 +26,7 @@ numpy>=1.16.4
 * 下载[训练好的模型](https://pan.baidu.com/s/1vKV-wPI-vj5uxo-Sh0GRfg)（提取码：gxtp）至本地，将其解压移动到`./results`文件夹中
 
 ### 快速测试
-运行下列代码可以迅速测试预训练模型在测试集上的分类精度，并进行损失函数、分类精度与网络参数的可视化
+运行下列代码可以迅速测试预训练模型在测试集上的分类精度，并进行损失函数、分类精度与网络参数的可视化，获得报告中的结果
 ```
 python  test.py
 python  test.py  --datapath ./dataset --logpath ./results --checkpoint checkpoint_best_hd300_reg0.01_lr0.5.pkl
