@@ -2,4 +2,4 @@
 周杭琪 21110980019
 
 ## 作业1：两层神经网络分类器
-https://github.com/zzhwfy/DATA620004-/tree/作业1
+https://github.com/zzhwfy/DATA620004-/tree/homework1
