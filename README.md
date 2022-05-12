@@ -30,7 +30,7 @@
 
 ## Run experiments
 ### 准备数据与预训练模型
-* 下载代码至本地
+* 下载代码至本地 
 
 * 下载[VOC2007数据集](https://pan.baidu.com/s/1EM81nuQESEak9fdD-K3MeQ)（提取码：nuis）至本地，将其解压并移动到`./dataset`（或自定义路径）文件夹中
     * 参考[FASTER RCNN](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models)，解压好的文件结构应为：
