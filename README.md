@@ -9,4 +9,4 @@ https://github.com/zzhwfy/DATA620004/tree/homework2_classification
 
 ## 期中作业（二）：目标检测
 Faster R-CNN
-https://github.com/zzhwfy/DATA620004/tree/homework2_classification
+https://github.com/zzhwfy/DATA620004/tree/homework2_fasterrcnn
