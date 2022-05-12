@@ -57,7 +57,7 @@ python predict.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./da
 ### 精度测试
 运行下列代码可以迅速测试训练好的模型在VOC2007验证集上的分类精度
 ```
-python validation.py --gpu_id 0 --weights ./results/res50/last_model.pth --datapath ./dataset
+python validation.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./dataset
 ```
 * --gpu_id：所使用GPU的id
 * --weights：训练好的模型保存路径
