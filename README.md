@@ -40,7 +40,7 @@ tensorboard  --logdir=results/visualization
 ### 快速测试
 运行下列代码可以迅速测试预训练的模型在CIFAR100测试集上的分类精度
 ```
-python  main.py  main.py --gpu_id 0 --test --datapath ./dataset --pretrain ./pretrain/baseline.pth
+python  main.py --gpu_id 0 --test --datapath ./dataset --pretrain ./pretrain/baseline.pth
 ```
 * --gpu_id：所使用GPU的id
 * --datapath：存放测试数据的文件夹路径
