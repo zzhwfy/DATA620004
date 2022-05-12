@@ -64,6 +64,7 @@ Mixup
 ```
 python  main.py --gpu_id 0 --model mixup --datapath ./dataset --logpath ./results/mixup
 ```
+
 基础参数：
 * --gpu_id：所使用GPU的id
 * --model：选择的训练模型，baseline / cutmix / cutout / mixup
@@ -76,5 +77,8 @@ python  main.py --gpu_id 0 --model mixup --datapath ./dataset --logpath ./result
 
 更多数据增强相关的参数细节可见`main.py`
 
-
-
+### 查看Tensorboard记录的实验数据
+```
+tensorboard  --logdir=results
+```
+* --logdir：Tensorboard路径
