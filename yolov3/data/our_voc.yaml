@@ -1,0 +1,8 @@
+train: ../dataset/VOC2007_for_yolo/train.txt  # train images (relative to 'path') 128 images
+val: ../dataset/VOC2007_for_yolo/valid.txt  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+nc: 20  # number of classes
+names: ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car', 'cat', 'chair', 'cow', 'diningtable', 'dog',
+        'horse', 'motorbike', 'person', 'pottedplant', 'sheep', 'sofa', 'train', 'tvmonitor']  # class names
