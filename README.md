@@ -3,3 +3,10 @@
 
 ## 作业1：两层神经网络分类器
 https://github.com/zzhwfy/DATA620004/tree/homework1
+
+## 期中作业（一）：数据增强
+https://github.com/zzhwfy/DATA620004/tree/homework2_classification
+
+## 期中作业（二）：目标检测
+Faster R-CNN
+https://github.com/zzhwfy/DATA620004/tree/homework2_classification
