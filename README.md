@@ -58,27 +58,32 @@ $dataset/VOC2007_for_yolo/                           # development kit
 ```
 $VOC2007_for_yolo/train.txt
 $VOC2007_for_yolo/valid.txt
-$VOC2007_for_yolo/valid.txt 
-$VOC2007_for_yolo/valid.txt 
+$VOC2007_for_yolo/images
+$VOC2007_for_yolo/labels
+$VOC2007_for_yolo/classes.name
 # ... and several other directories ...
 ```
-* 下载[训练好的模型]()（提取码：lp4j）至本地，将其解压移动到当前文件夹中
+* 下载[预先训练的模型权重yolo3.pt]()（提取码：lp4j）至本地，将其解压移动到当前文件夹中
 ### 训练与精度测试
+使用以下代码完成训练，其中测试集loss和mAP计算的会自动完成
 ```
 python train.py --img 640 --batch 16 --epochs 300 --data our_voc.yaml --weights yolov3.pt  --tf_log  './tf_logs/finetune'
 ```
-### 目标检测
-* 选择不在VOC2007数据集中，但拥有其类别的三张测试图像： [Test Images](https://pan.baidu.com/s/1qdi8z6gTiALvh7SF-_dgqg)（提取码：ys46），将其下载至本地，解压并移动到`./dataset`（或自定义路径）文件夹中
-
-运行下列代码可以使用训练好的模型直接在测试图像上进行目标检测
-```
-python predict.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./dataset/test_images --logpath ./results/res50
-```
-
-
-
 查看Tensorboard记录的实验数据
 ```
 tensorboard  --logdir=./tf_logs/finetune
 ```
+### 目标检测
+* 选择不在VOC2007数据集中，但拥有其类别的三张测试图像： [Test Images](https://pan.baidu.com/s/1qdi8z6gTiALvh7SF-_dgqg)（提取码：ys46），将其下载至本地，解压并移动到`test_image`（或自定义路径）文件夹中
+
+运行下列代码可以使用训练好的模型直接在测试图像上进行目标检测
+```
+python detect.py --weights weights/last.pt --source ./test_images
+```
+或者
+```
+python detect.py --weights weights/best.pt --source ./test_images
+```
+
+
 
