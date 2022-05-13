@@ -56,7 +56,7 @@ $./dataset/VOCdevkit/VOC2007                    # image sets, annotations, etc.
 # ... and several other directories ...
 ```
 * 下载[训练好的模型](https://pan.baidu.com/s/1XTkkwusbHk4SdW8iv05yDw)（提取码：lp4j）至本地，将其解压移动到`./pretrain`（或自定义路径）文件夹中
-
+### 训练与精度测试
 ### 目标检测
 * 选择不在VOC2007数据集中，但拥有其类别的三张测试图像： [Test Images](https://pan.baidu.com/s/1qdi8z6gTiALvh7SF-_dgqg)（提取码：ys46），将其下载至本地，解压并移动到`./dataset`（或自定义路径）文件夹中
 
@@ -64,39 +64,11 @@ $./dataset/VOCdevkit/VOC2007                    # image sets, annotations, etc.
 ```
 python predict.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./dataset/test_images --logpath ./results/res50
 ```
-* --gpu_id：所使用GPU的id
-* --weights：训练好的模型保存路径
-* --datapath：存放测试数据的文件夹路径
-* --logpath：保存输出检测结果图像的路径
-
-### 精度测试
-运行下列代码可以迅速测试训练好的模型在VOC2007验证集上的分类精度
-```
-python validation.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./dataset
-```
-* --gpu_id：所使用GPU的id
-* --weights：训练好的模型保存路径
-* --datapath：VOC2007数据集的根目录（存放`VOCdevkit`的文件夹路径）
 
 
-### 自定义训练
-* 首先下载pytorch官方提供的[Faster R-CNN COCO训练模型](https://pan.baidu.com/s/1Z6dbTA02mODOtDyIdaa-7A)（提取码：eudr）至本地，将其移动到`./baseline`文件夹中，作为训练用的预训练模型
-
-运行下列代码可以训练Faster R-CNN + Resnet50
-```
-python train.py --gpu_id 0 --epochs 100 --logpath ./results/res50 --datapath ./dataset
-```
-基础参数：
-* --gpu_id：所使用GPU的id
-* --datapath：存放训练数据的文件夹路径
-* --logpath：保存模型的文件夹路径
-* --batch_size：批大小
-* --seed：训练的随机数种子
-* --epoch：训练的总epoch数
-* --lr：初始学习率
 
 查看Tensorboard记录的实验数据
 ```
-tensorboard  --logdir=results
+tensorboard  --logdir=./tf_logs/finetune
 ```
 
