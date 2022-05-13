@@ -32,10 +32,15 @@
 * `train.py` 训练的主体文件
 * `val.py` 在验证集上测试的主体文件
 * `detect.py` 在测试图像上做图的主体文件
-* `backbone` 训练时用到的backbone，主要是resnet系列
-* `network_files` Faster R-CNN模型，结构与pytorch官方一致
-* `train_utils` 训练与验证的主要代码
-* `pascal_voc_classes.json` 保存VOC2007类别，无需改动
+* `setup.cfg` 项目层次的配置文件
+* `requirements.txt` 需要的库
+* `utils` 任务所需的各类模块、函数
+* `models` yolo模型
+* `data` 训练集、验证集合设置
+* `run` 实验结果
+* `tf_logs` 训练阶段tensorboard的记录
+* `test_image` 用来测试的voc外的图片
+
 
 
 ## Run experiments
