@@ -75,15 +75,15 @@ tensorboard  --logdir=./tf_logs/finetune
 ```
 ### 目标检测
 * 选择不在VOC2007数据集中，但拥有其类别的三张测试图像： [Test Images](https://pan.baidu.com/s/1qdi8z6gTiALvh7SF-_dgqg)（提取码：ys46），将其下载至本地，解压并移动到`test_image`（或自定义路径）文件夹中
-我们提供训练好的模型权重[best.pt](https://pan.baidu.com/s/1aZcgFrkiU-rJGaj70lvyxw)（提取码：53iw）和[last.pt](https://pan.baidu.com/s/1WDC9SofKEt9c9g4ZMbxCYA)（提取码：wl7t）
+我们提供训练好的模型权重[best.pt](https://pan.baidu.com/s/1aZcgFrkiU-rJGaj70lvyxw)（提取码：53iw）和[last.pt](https://pan.baidu.com/s/1WDC9SofKEt9c9g4ZMbxCYA)（提取码：wl7t）,下载后将其放置于当前文件夹的weights文件中。
 
 运行下列代码可以使用训练好的模型直接在测试图像上进行目标检测，
 ```
-python detect.py --weights weights/last.pt --source ./test_images
+python detect.py --weights  ./weights/last.pt --source ./test_images
 ```
 或者
 ```
-python detect.py --weights weights/best.pt --source ./test_images
+python detect.py --weights ./weights/best.pt --source ./test_images
 ```
 
 
