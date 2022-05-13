@@ -47,16 +47,20 @@
 ### 准备数据与预训练模型
 * 下载代码至本地 
 
-* 下载[VOC2007数据集](https://pan.baidu.com/s/1EM81nuQESEak9fdD-K3MeQ)（提取码：nuis）至本地，将其解压并移动到`./dataset`（或自定义路径）文件夹中
-    * 参考[FASTER RCNN](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models)，解压好的文件结构应为：
+* 下载经过处理的[VOC2007数据集]()（提取码：nuis）至本地，将其解压并移动到`dataset`（或自定义路径）文件夹中， 其中dataset文件夹与本项目文件夹同级
+    * 具体的说文件结构应为：
 ```
+$
 $./dataset/VOCdevkit/                           # development kit
 $./dataset/VOCdevkit/VOCcode/                   # VOC utility code
 $./dataset/VOCdevkit/VOC2007                    # image sets, annotations, etc.
 # ... and several other directories ...
 ```
-* 下载[训练好的模型](https://pan.baidu.com/s/1XTkkwusbHk4SdW8iv05yDw)（提取码：lp4j）至本地，将其解压移动到`./pretrain`（或自定义路径）文件夹中
+* 下载[训练好的模型]()（提取码：lp4j）至本地，将其解压移动到当前文件夹中
 ### 训练与精度测试
+```
+python train.py --img 640 --batch 16 --epochs 300 --data our_voc.yaml --weights yolov3.pt  --tf_log  './tf_logs/finetune'
+```
 ### 目标检测
 * 选择不在VOC2007数据集中，但拥有其类别的三张测试图像： [Test Images](https://pan.baidu.com/s/1qdi8z6gTiALvh7SF-_dgqg)（提取码：ys46），将其下载至本地，解压并移动到`./dataset`（或自定义路径）文件夹中
 
