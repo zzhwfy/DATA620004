@@ -50,10 +50,16 @@
 * 下载经过处理的[VOC2007数据集]()（提取码：nuis）至本地，将其解压并移动到`dataset`（或自定义路径）文件夹中， 其中dataset文件夹与本项目文件夹同级
     * 具体的说文件结构应为：
 ```
-$
-$./dataset/VOCdevkit/                           # development kit
-$./dataset/VOCdevkit/VOCcode/                   # VOC utility code
-$./dataset/VOCdevkit/VOC2007                    # image sets, annotations, etc.
+$yolov3 #本项目的文件夹
+$dataset/VOC2007_for_yolo/                           # development kit
+# ... and several other directories ...
+```
+其中VOC2007_for_yolo的结构如下
+```
+$VOC2007_for_yolo/train.txt
+$VOC2007_for_yolo/valid.txt
+$VOC2007_for_yolo/valid.txt 
+$VOC2007_for_yolo/valid.txt 
 # ... and several other directories ...
 ```
 * 下载[训练好的模型]()（提取码：lp4j）至本地，将其解压移动到当前文件夹中
