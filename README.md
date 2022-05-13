@@ -6,22 +6,32 @@
 
 
 ## Dependencies
-* lxml==4.6.2
-* matplotlib==3.2.1
-* numpy==1.17.0
-* tqdm==4.42.1
-* torch==1.6.0
-* torchvision==0.7.0
-* pycocotools==2.0.0
-* Pillow==8.0.1
+* matplotlib>=3.2.2
+* numpy>=1.18.5
+* opencv-python>=4.1.2
+* Pillow>=7.1.2
+* PyYAML>=5.3.1
+* requests>=2.23.0
+* scipy>=1.4.1
+* torch>=1.7.0
+* torchvision>=0.8.1
+* tqdm>=4.41.0
+* tensorboard>=2.4.1
+* wandb
+* pandas>=1.1.4
+* seaborn>=0.11.0
+*  albumentations>=1.0.3
+*  Cython  # for pycocotools 
+*  pycocotools>=2.0  # COCO mAP
+* roboflow
+* thop 
 
 ## Code organization
 代码框架主要如下：
 
 * `train.py` 训练的主体文件
-* `validation.py` 在验证集上测试的主体文件
-* `draw_box_utils.py`, `predict.py` 用模型对输入的测试图像直接进行目标检测，并以图像的形式保存检测结果
-* `my_dataset.py`, `my_transform.py` VOC2007数据集的读取与预处理
+* `val.py` 在验证集上测试的主体文件
+* `detect.py` 在测试图像上做图的主体文件
 * `backbone` 训练时用到的backbone，主要是resnet系列
 * `network_files` Faster R-CNN模型，结构与pytorch官方一致
 * `train_utils` 训练与验证的主要代码
