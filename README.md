@@ -1,5 +1,5 @@
-## 期中作业（二）：目标检测 Faster R-CNN
-课程**DATA620004 神经网络和深度学习**期中作业相关代码
+## 期末作业（二）：预训练与Faster R-CNN
+课程**DATA620004 神经网络和深度学习**期末作业相关代码
 
 周杭琪 21110980019
 樊可 21110980004
@@ -47,7 +47,9 @@ $./dataset/VOCdevkit/VOC2007                    # image sets, annotations, etc.
 
 运行下列代码可以使用训练好的模型直接在测试图像上进行目标检测
 ```
-python predict.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./dataset/test_images --logpath ./results/res50
+python predict.py --gpu_id 0 --weights ./pretrain/last_model_coco.pth --datapath ./dataset/test_images --logpath ./results/res50_coco
+python predict.py --gpu_id 0 --weights ./pretrain/last_model_imagenet.pth --datapath ./dataset/test_images --logpath ./results/res50_imagenet
+python predict.py --gpu_id 0 --weights ./pretrain/last_model_none.pth --datapath ./dataset/test_images --logpath ./results/res50_none
 ```
 * --gpu_id：所使用GPU的id
 * --weights：训练好的模型保存路径
@@ -57,21 +59,33 @@ python predict.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./da
 ### 精度测试
 运行下列代码可以迅速测试训练好的模型在VOC2007验证集上的分类精度
 ```
-python validation.py --gpu_id 0 --weights ./pretrain/last_model.pth --datapath ./dataset
+python validation.py --gpu_id 0 --weights ./pretrain/last_model_coco.pth --datapath ./dataset
+python validation.py --gpu_id 0 --weights ./pretrain/last_model_imagenet.pth --datapath ./dataset
+python validation.py --gpu_id 0 --weights ./pretrain/last_model_none.pth --datapath ./dataset
 ```
 * --gpu_id：所使用GPU的id
 * --weights：训练好的模型保存路径
 * --datapath：VOC2007数据集的根目录（存放`VOCdevkit`的文件夹路径）
 
 
-### 自定义训练
-* 首先下载pytorch官方提供的[Faster R-CNN COCO训练模型](https://pan.baidu.com/s/1Z6dbTA02mODOtDyIdaa-7A)（提取码：eudr）至本地，将其移动到`./baseline`文件夹中，作为训练用的预训练模型
+### 训练模型：探究预训练的影响
+* 下载在ImageNet上训练的Resnet50[Faster R-CNN ImageNet backbone](https://pan.baidu.com)（提取码：）至本地，将其移动到`./baseline`文件夹中
+* 下载pytorch官方提供的[Faster R-CNN COCO训练模型](https://pan.baidu.com/s/1Z6dbTA02mODOtDyIdaa-7A)（提取码：eudr）至本地，将其移动到`./baseline`文件夹中
 
-运行下列代码可以训练Faster R-CNN + Resnet50
+运行下列代码可以训练无预训练的Faster R-CNN + Resnet50
 ```
-python train.py --gpu_id 0 --epochs 100 --logpath ./results/res50 --datapath ./dataset
+python train.py --gpu_id 0 --pretrain none --epochs 100 --logpath ./results/res50_none --datapath ./dataset
+```
+运行下列代码可以训练读取在ImageNet上预训练Resnet50作为backbone初始参数的Faster R-CNN + Resnet50
+```
+python train.py --gpu_id 0 --pretrain imagenet --epochs 100 --logpath ./results/res50_imagenet --datapath ./dataset
+```
+运行下列代码可以训练读取在COCO上预训练的Faster R-CNN作为整个模型初始参数的Faster R-CNN + Resnet50
+```
+python train.py --gpu_id 0 --pretrain coco --epochs 100 --logpath ./results/res50_coco --datapath ./dataset
 ```
 基础参数：
+* --pretrain：预训练的方式
 * --gpu_id：所使用GPU的id
 * --datapath：存放训练数据的文件夹路径
 * --logpath：保存模型的文件夹路径
