@@ -40,7 +40,7 @@ $./dataset/VOCdevkit/VOCcode/                   # VOC utility code
 $./dataset/VOCdevkit/VOC2007                    # image sets, annotations, etc.
 # ... and several other directories ...
 ```
-* 下载[训练好的模型](https://pan.baidu.com/s/1XTkkwusbHk4SdW8iv05yDw)（提取码：lp4j）至本地，将其解压移动到`./pretrain`（或自定义路径）文件夹中
+* 下载[训练好的模型](https://pan.baidu.com/s/1bVFftXGZIWxc-ZjE0zhP9w)（提取码：xvoz）至本地，将其解压移动到`./pretrain`（或自定义路径）文件夹中
 
 ### 目标检测
 * 选择不在VOC2007数据集中，但拥有其类别的三张测试图像： [Test Images](https://pan.baidu.com/s/1qdi8z6gTiALvh7SF-_dgqg)（提取码：ys46），将其下载至本地，解压并移动到`./dataset`（或自定义路径）文件夹中
@@ -69,7 +69,7 @@ python validation.py --gpu_id 0 --weights ./pretrain/last_model_none.pth --datap
 
 
 ### 训练模型：探究预训练的影响
-* 下载在ImageNet上训练的Resnet50[Faster R-CNN ImageNet backbone](https://pan.baidu.com)（提取码：）至本地，将其移动到`./baseline`文件夹中
+* 下载在ImageNet上训练的[Resnet50 ImageNet backbone](https://pan.baidu.com/s/1yNgqPNF1T28y9TL6qOCYHw)（提取码：mcop）至本地，将其移动到`./baseline`文件夹中
 * 下载pytorch官方提供的[Faster R-CNN COCO训练模型](https://pan.baidu.com/s/1Z6dbTA02mODOtDyIdaa-7A)（提取码：eudr）至本地，将其移动到`./baseline`文件夹中
 
 运行下列代码可以训练无预训练的Faster R-CNN + Resnet50
