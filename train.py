@@ -40,24 +40,26 @@ class Visualization(nn.Module):
         writer.add_image(tag, grid, epoch)
 
 
-def create_model(num_classes:int, device):
+def create_model(num_classes:int, device, pretrain = 'none'):
 
-    backbone = resnet50_fpn_backbone()
+    backbone = resnet50_fpn_backbone(pretrain)
     # 训练自己数据集时不要修改这里的91，修改的是传入的num_classes参数
-    model = FasterRCNN(backbone=backbone, num_classes=91)
+    model = FasterRCNN(backbone=backbone, num_classes=num_classes)
     # 载入预训练模型权重
-    
-    print('load pretrained model')
-    weights_dict = torch.load("./backbone/fasterrcnn_resnet50_fpn_coco.pth", map_location=device)
-    missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
-    if len(missing_keys) != 0 or len(unexpected_keys) != 0:
-        print("missing_keys: ", missing_keys)
-        print("unexpected_keys: ", unexpected_keys)
+    if pretrain == 'coco':
+        print('load pretrained model from COCO')
+        weights_dict = torch.load("./backbone/fasterrcnn_resnet50_fpn_coco.pth", map_location=device)
+        missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
+        if len(missing_keys) != 0 or len(unexpected_keys) != 0:
+            print("missing_keys: ", missing_keys)
+            print("unexpected_keys: ", unexpected_keys)
 
-    # get number of input features for the classifier
-    in_features = model.roi_heads.box_predictor.cls_score.in_features
-    # replace the pre-trained head with a new one
-    model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+        # get number of input features for the classifier
+        in_features = model.roi_heads.box_predictor.cls_score.in_features
+        # replace the pre-trained head with a new one
+        model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+        
+        
 
     return model
 
@@ -108,7 +110,7 @@ def main(args):
     # create models num_classes equal background + 20 classes
     # print(args.num_classes)
 
-    model = create_model(num_classes=len(train_data_set._classes), device=device)
+    model = create_model(num_classes=len(train_data_set._classes), device=device, pretrain = args.pretrain)
     # print(models)
 
     model.to(device)
@@ -188,6 +190,8 @@ if __name__ == "__main__":
     parser.add_argument('--logpath', default='./results/res50') #希望保存的logs路径，包括tensorboard
     # 若需要接着上次训练，则指定上次训练保存权重文件地址
     parser.add_argument('--resume', default='', type=str, help='resume from checkpoint')
+    # 预训练方式
+    parser.add_argument('--pretrain', default='none', choices = ['none', 'coco','imagenet'], type=str)
     # 指定接着从哪个epoch数开始训练
     parser.add_argument('--start_epoch', default=0, type=int, help='start epoch')
     # 训练的总epoch数
