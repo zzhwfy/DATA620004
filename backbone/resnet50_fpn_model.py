@@ -348,17 +348,26 @@ class BackboneWithFPN(nn.Module):
         return x
 
 
-def resnet50_fpn_backbone():
+def resnet50_fpn_backbone(pretrain = 'none'):
     # FrozenBatchNorm2d的功能与BatchNorm2d类似，但参数无法更新
     # norm_layer=misc.FrozenBatchNorm2d
     resnet_backbone = ResNet(Bottleneck, [3, 4, 6, 3],
                              include_top=False)
+    
+    if pretrain == 'imagenet':
+        weights_dict = torch.load("./backbone/resnet50_imagenet.pth", map_location='cpu') #https://download.pytorch.org/models/resnet50-19c8e357.pth
+        missing_keys, unexpected_keys = resnet_backbone.load_state_dict(weights_dict, strict=False)
+        if len(missing_keys) != 0 or len(unexpected_keys) != 0:
+            print("missing_keys: ", missing_keys)
+            print("unexpected_keys: ", unexpected_keys)
 
     # freeze layers
     # 冻结layer1及其之前的所有底层权重（基础通用特征）
-    for name, parameter in resnet_backbone.named_parameters():
-        if 'layer2' not in name and 'layer3' not in name and 'layer4' not in name:
-            parameter.requires_grad_(False)
+    if pretrain != 'none':
+        print('Freeze the pretrained layer1')
+        for name, parameter in resnet_backbone.named_parameters():
+            if 'layer2' not in name and 'layer3' not in name and 'layer4' not in name:
+                parameter.requires_grad_(False)
 
     return_layers = {'layer1': '0', 'layer2': '1', 'layer3': '2', 'layer4': '3'}
 
