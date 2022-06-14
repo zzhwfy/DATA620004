@@ -13,6 +13,9 @@ https://github.com/zzhwfy/DATA620004/tree/homework2_fasterrcnn
 
 YOLOV3
 https://github.com/zzhwfy/DATA620004/tree/homework2_yolo
-
+## 期末作业（一）：视频语义分割
+https://github.com/zzhwfy/DATA620004/tree/homework3_videoseg
 ## 期末作业（二）：预训练与Faster R-CNN
 https://github.com/zzhwfy/DATA620004/tree/homework3_pretrain
+## 期末作业（三）：Transformer
+https://github.com/zzhwfy/DATA620004/tree/homework3_transformer
