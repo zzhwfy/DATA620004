@@ -15,4 +15,4 @@ YOLOV3
 https://github.com/zzhwfy/DATA620004/tree/homework2_yolo
 
 ## 期末作业（二）：预训练与Faster R-CNN
-https://github.com/zzhwfy/DATA620004/blob/homework3_pretrain
+https://github.com/zzhwfy/DATA620004/tree/homework3_pretrain
