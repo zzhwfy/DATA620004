@@ -25,12 +25,13 @@
 
 * 下载[CIFAR100数据集](https://pan.baidu.com/s/1l-1VepJNsM4Q7ImkB28Cyg)（提取码：6pjr）至本地，将其解压并移动到`./dataset`（或自定义路径）文件夹中
 
-* 下载[训练好的模型](https://pan.baidu.com/s/1wJR1GNcoFY2KYTDf3rk0yQ)（提取码：br3q）至本地，将其解压移动到`./pretrain`（或自定义路径）文件夹中
-
+* 下载[训练好的模型](https://pan.baidu.com/s/12C8X9LbfIolMB0NLCalIPQ?pwd=279b)（提取码：279b）至本地，将其解压移动到`./pretrain`（或自定义路径）文件夹中
+* 
+--来自百度网盘超级会员v6的分享
 ### 快速测试
 运行下列代码可以迅速测试预训练的模型在CIFAR100测试集上的分类精度
 ```
-python  main-vit.py --gpu_id 0 --test --datapath ./dataset --pretrain ./pretrain/baseline.pth 
+python  main-vit.py --gpu_id 0 --test --datapath ./dataset --pretrain ./pretrain/latest_epoch.pth
 ```
 * --gpu_id：所使用GPU的id
 * --datapath：存放测试数据的文件夹路径
